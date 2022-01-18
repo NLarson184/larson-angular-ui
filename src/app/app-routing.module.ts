@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'projectList/sharedCalendar', component: SharedCalendarComponent },
   { path: 'contact', component: ContactComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '*', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
