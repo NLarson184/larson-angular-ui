@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ContactComponent } from './contact/contact.component';
 import { PageNotFoundComponent } from './error/page-not-found/page-not-found.component';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
 import { BucketListComponent } from './project-list/bucket-list/bucket-list.component';
 import { ExerciseTrackerComponent } from './project-list/exercise-tracker/exercise-tracker.component';
 import { GoalTrackerComponent } from './project-list/goal-tracker/goal-tracker.component';
