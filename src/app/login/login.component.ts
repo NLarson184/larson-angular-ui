@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   lastName: string = '';
 
   isExistingUser: boolean = true;
-  isNewUser: boolean = false;
   isTransitioning: boolean = false;
 
   constructor(
@@ -37,26 +36,5 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-  }
-
-  switchFormType() {
-    if (this.isExistingUser) {
-      this.isExistingUser = false;
-      setTimeout(
-        () => {
-          this.isNewUser = true;
-        },
-        101
-      );
-    } else {
-      this.isNewUser = false;
-      setTimeout(
-        () => {
-          this.isExistingUser = true;
-        },
-        101
-      );
-    }
-
   }
 }

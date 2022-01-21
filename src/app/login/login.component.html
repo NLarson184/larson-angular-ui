@@ -14,35 +14,6 @@
         <label for="passwordInput" class="form-label">Password</label>
         <input type="password" class="form-control" id="passwordInput" [(ngModel)]="password">
     </div>
-    <div class="mb-3">
-        <button class='btn btn-link' (click)="switchFormType()">Sign Up</button>
-    </div>
-</div>
-<div class="modal-body" *ngIf="isNewUser" @fadeInOut>
-    <div class="mb-3">
-        <label for="firstNameInput" class="form-label">First Name</label>
-        <input type="text" class="form-control" [(ngModel)]="firstName" id="firstNameInput" placeholder="John">
-    </div>
-    <div class="mb-3">
-        <label for="lastNameInput" class='form-label'>Last Name</label>
-        <input type="text" class="form-control" [(ngModel)]="lastName" id="lastNameInput" placeholder="Doe">
-    </div>
-    <div class="mb-3">
-        <label for="emailInput" class="form-label">Email Address</label>
-        <input type="email" class="form-control" [(ngModel)]="emailAddress" id="emailInput"
-            placeholder="ceo@mycompany.com">
-    </div>
-    <div class="mb-3">
-        <label for="passwordInput" class="form-label">Password</label>
-        <input type="password" class="form-control" id="passwordInput" [(ngModel)]="password">
-    </div>
-    <div class="mb-3">
-        <label for="passwordInput" class="form-label">Confirm Password</label>
-        <input type="password" class="form-control" id="passwordInput" [(ngModel)]="password">
-    </div>
-    <div class="mb-3">
-        <button class='btn btn-link' (click)="switchFormType()">Sign In</button>
-    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Cancel Click')">Cancel</button>
