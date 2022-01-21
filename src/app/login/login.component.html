@@ -1,22 +1,26 @@
 <div class="modal-header">
-    <h4 class="modal-title">{{ isExistingUser ? 'Login' : 'New User' }}</h4>
+    <h4 class="modal-title">Login</h4>
     <button type="button" class="btn btn-light" aria-label="Close" (click)="activeModal.dismiss('Cross Click')">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="modal-body" *ngIf="isExistingUser" @fadeInOut>
-    <div class="mb-3">
-        <label for="emailInput" class="form-label">Email Address</label>
-        <input type="email" class="form-control" [(ngModel)]="emailAddress" id="emailInput"
-            placeholder="ceo@mycompany.com">
-    </div>
-    <div class="mb-3">
-        <label for="passwordInput" class="form-label">Password</label>
-        <input type="password" class="form-control" id="passwordInput" [(ngModel)]="password">
-    </div>
+<div class="modal-body" @fadeInOut>
+    <form>
+        <div class="mb-3">
+            <label for="emailInput" class="form-label">Email Address</label>
+            <input type="email" class="form-control" [(ngModel)]="emailAddress" id="emailInput"
+                placeholder="ceo@mycompany.com" #emailInput="ngModel" required name="emailInput" email>
+        </div>
+        <div class="mb-3">
+            <label for="passwordInput" class="form-label">Password</label>
+            <input type="password" class="form-control" id="passwordInput" [(ngModel)]="password" required
+                #passwordInput="ngModel" name="passwordInput">
+        </div>
+    </form>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Cancel Click')">Cancel</button>
-    <button *ngIf="isExistingUser" type="submit" class="btn btn-success">Login</button>
-    <button *ngIf="!isExistingUser" type="submit" class="btn btn-success">Register</button>
+    <button *ngIf="emailAddress && password && !emailInput.invalid && !passwordInput.invalid" type="submit" class="btn btn-success">Login</button>
+    <button *ngIf="!emailAddress || !password || emailInput.invalid || passwordInput.invalid" type="submit" class="btn btn-secondary"
+        disabled>Login</button>
 </div>

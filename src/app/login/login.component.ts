@@ -24,12 +24,6 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class LoginComponent implements OnInit {
   emailAddress: string = '';
   password: string = '';
-  confirmPassword: string = '';
-  firstName: string = '';
-  lastName: string = '';
-
-  isExistingUser: boolean = true;
-  isTransitioning: boolean = false;
 
   constructor(
     public activeModal: NgbActiveModal
