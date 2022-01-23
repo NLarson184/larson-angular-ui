@@ -20,7 +20,8 @@
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss('Cancel Click')">Cancel</button>
-    <button *ngIf="emailAddress && password && !emailInput.invalid && !passwordInput.invalid" type="submit" class="btn btn-success">Login</button>
-    <button *ngIf="!emailAddress || !password || emailInput.invalid || passwordInput.invalid" type="submit" class="btn btn-secondary"
-        disabled>Login</button>
+    <button *ngIf="emailAddress && password && !emailInput.invalid && !passwordInput.invalid" type="submit"
+        class="btn btn-success" (click)="onSubmit()">Login</button>
+    <button *ngIf="!emailAddress || !password || emailInput.invalid || passwordInput.invalid" type="submit"
+        class="btn btn-secondary" disabled>Login</button>
 </div>

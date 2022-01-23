@@ -10,6 +10,7 @@
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body w-100">
+        <!-- Core Navbar Section -->
         <ul class="navbar-nav w-100 justify-content-center">
           <li class="nav-item">
             <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
@@ -42,9 +43,18 @@
             <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
           </li>
         </ul>
-        <ul class='navbar-nav ms-auto'>
+        <!-- Login Section -->
+        <ul class='navbar-nav ms-auto' *ngIf="!isLoggedIn">
           <li class="nav-item">
             <a type="button" class="nav-link" (click)="openLoginModal()">Login</a>
+          </li>
+        </ul>
+        <ul class='navbar-nav ms-auto' *ngIf="isLoggedIn">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/profile">My Account</a>
+          </li>
+          <li class="nav-item">
+            <a type="button" class="nav-link" (click)="logout()">Logout</a>
           </li>
         </ul>
       </div>

@@ -1,10 +1,11 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { MatIconRegistry } from '@angular/material/icon';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { map, Observable, shareReplay } from 'rxjs';
 import { LoginComponent } from './login/login.component';
+import { TokenStorageService } from './services/token-storage.service';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,11 @@ import { LoginComponent } from './login/login.component';
     
   ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   private title: string = 'Nick Larson Site';
+  private roles: string[] = [];
+  isLoggedIn = false;
+  showAdminBoard = false;
 
   // Detect if this is being viewed on mobile
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -27,14 +31,30 @@ export class AppComponent {
   constructor(
     private registry: MatIconRegistry,
     private breakpointObserver: BreakpointObserver,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private tokenStorageService: TokenStorageService
   ) {
     // Load in the SCSS fontawesome libraries into the mat icon registry
     registry.registerFontClassAlias('fontawesome', 'fa');
     registry.registerFontClassAlias('brands', 'fab');
   }
 
+  ngOnInit(): void {
+      this.isLoggedIn = !!this.tokenStorageService.getToken();
+      if(this.isLoggedIn) {
+        const user = this.tokenStorageService.getUser();
+        this.roles = user.roles;
+
+        this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+      }
+  }
+
   openLoginModal() {
     const loginModalRef = this.modalService.open(LoginComponent);
+  }
+
+  logout(): void {
+    this.tokenStorageService.signOut();
+    window.location.reload();
   }
 }
