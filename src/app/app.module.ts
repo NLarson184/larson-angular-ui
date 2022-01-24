@@ -13,7 +13,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
@@ -28,6 +28,9 @@ import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
 import { ProfileComponent } from './profile/profile.component';
+import { RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS, RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
+import { environment } from 'src/environments/environment';
+import { RatingComponent } from './shared/rating/rating.component';
 
 @NgModule({
   declarations: [
@@ -41,13 +44,15 @@ import { ProfileComponent } from './profile/profile.component';
     ProjectListComponent,
     ContactComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    RatingComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    RecaptchaModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgbModule,
@@ -59,7 +64,15 @@ import { ProfileComponent } from './profile/profile.component';
     MatSidenavModule,
     MatListModule,
   ],
-  providers: [authInterceptorProviders],
+  providers: [
+    authInterceptorProviders,
+    {
+      provide: RECAPTCHA_SETTINGS,
+      useValue: {
+        siteKey: environment.siteKey
+      } as RecaptchaSettings
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

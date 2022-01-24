@@ -1,1 +1,199 @@
-<p>resume works!</p>
+<div class="container resume-style p-3">
+
+    <div class="row">
+        <div class="col-md-5">
+            <h1>
+                Nicholas R. Larson
+                <br />
+                <small class="text-muted">Full-Stack Software Engineer</small>
+            </h1>
+        </div>
+        <div class="col-md-7 resume-summary">
+            <blockquote>
+                Full-stack software developer with experience in object-oriented languages, SQL and NoSQL databases,
+                project management, and interfacing directly with customers. I'm looking to have the opportunity to
+                learn new technologies and best practices in order to consistently deploy clean and efficient code.
+            </blockquote>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4 border-end border-">
+            <!-- Personal Info -->
+            <div class="row">
+                <h2>Personal Information</h2>
+                <dl>
+                    <dt>Location</dt>
+                    <dd>
+                        <span>Denver, CO</span>
+                    </dd>
+                    <dt>Phone</dt>
+                    <dd *ngIf="!captchaResponse" style="color:red">Complete ReCaptcha To Unlock</dd>
+                    <dd *ngIf="captchaResponse">(818) 929-4189</dd>
+                    <dt>E-mail</dt>
+                    <dd *ngIf="!captchaResponse" style="color:red">Complete ReCaptcha To Unlock</dd>
+                    <dd *ngIf="captchaResponse">nlarson184@gmail.com</dd>
+                    <dt>LinkedIn</dt>
+                    <dd>
+                        <a
+                            href="https://www.linkedin.com/in/nicholas-larson-883566129/">https://www.linkedin.com/in/nicholas-larson-883566129/</a>
+                    </dd>
+                </dl>
+                <!-- ReCaptcha v2 -->
+                <re-captcha (resolved)="captchaResolved($event)" [siteKey]="captchaSiteKey">
+                </re-captcha>
+            </div>
+            <!-- Skill Assessment -->
+            <div class="row">
+                <h2>Skill Set</h2>
+                <dl class="row">
+                    <dt class="col-sm-3">C#</dt>
+                    <dd class="col-sm-9">
+                        <app-rating [currRating]="4" [maxRating]="5" [ratingDescriptions]="skillDescriptions">
+                        </app-rating>
+                    </dd>
+                    <dt class="col-sm-3">Angular</dt>
+                    <dd class="col-sm-9">
+                        <app-rating [currRating]="4" [maxRating]="5" [ratingDescriptions]="skillDescriptions">
+                        </app-rating>
+                    </dd>
+                    <dt class="col-sm-3">SQL</dt>
+                    <dd class="col-sm-9">
+                        <app-rating [currRating]="3" [maxRating]="5" [ratingDescriptions]="skillDescriptions">
+                        </app-rating>
+                    </dd>
+                    <dt class="col-sm-3">Python</dt>
+                    <dd class="col-sm-9">
+                        <app-rating [currRating]="3" [maxRating]="5" [ratingDescriptions]="skillDescriptions">
+                        </app-rating>
+                    </dd>
+                    <dt class="col-sm-3">Express.js</dt>
+                    <dd class="col-sm-9">
+                        <app-rating [currRating]="2" [maxRating]="5" [ratingDescriptions]="skillDescriptions">
+                        </app-rating>
+                    </dd>
+                    <dt class="col-sm-3">MongoDB</dt>
+                    <dd class="col-sm-9">
+                        <app-rating [currRating]="2" [maxRating]="5" [ratingDescriptions]="skillDescriptions">
+                        </app-rating>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <h2>Work Experience</h2>
+            <div class="row">
+                <div class="col-sm-2">
+                    <strong>2017/07 - Present</strong>
+                </div>
+                <div class="col-sm-10">
+                    <h4>
+                        Software Systems Engineer
+                        <br />
+                        <small class="text-muted">Sandia National Laboratories</small>
+                    </h4>
+                    <ul>
+                        <li>
+                            Met directly with customers and project leads to gather requirements to efficiently collect
+                            data and manage production product flows.
+                        </li>
+                        <li>
+                            Functioned as a point-of-contact for data-retention, production control, and reporting for
+                            multiple research projects within in the lab.
+                        </li>
+                        <li>
+                            Wrote full-stack web applications in Angular, C#, and SQL for custom inventory management.
+                        </li>
+                        <li>
+                            Saved the company more the $100,000 a year by optimizing the timesheet process for lab
+                            technicians.
+                        </li>
+                        <li>
+                            Worked with team to develop DevOps procedures and help move the team towards more modern
+                            frameworks (.NET Core, Angular, etc.)
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <strong>2015/10 - 2017/05</strong>
+                </div>
+                <div class="col-sm-10">
+                    <h4>
+                        Operations Engineer Intern
+                        <br />
+                        <small class="text-muted">Metropia Inc.</small>
+                    </h4>
+                    <ul>
+                        <li>
+                            Set up and managed a Jenkins CI server to save the company 15-20 engineering hours per
+                            month, while also allowing for a more frequent and stable release schedule.
+                        </li>
+                        <li>
+                            Leveraged an AWS Device Farm in order to run automated Appium tests through Jenkins.
+                        </li>
+                        <li>
+                            Interfaced with the CEO and international developers to efficiently test new versions of the
+                            application.
+                        </li>
+                        <li>
+                            Quickly learned and became comfortable with working around a language and cultural barrier.
+                        </li>
+                        <li>
+                            Familiar with the benefits and struggles of working at a startup company.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-2">
+                    <strong>2013/05 - 2015/09</strong>
+                </div>
+                <div class="col-sm-10">
+                    <h4>
+                        IT and App Developer
+                        <br />
+                        <small class="text-muted">Target Props LLC</small>
+                    </h4>
+                    <ul>
+                        <li>
+                            Developed an Android application to mimic classic vinyl green screening on small devices.
+                        </li>
+                        <li>
+                            The application protected devices from the invasive vinyl removal process, which extended
+                            the rental life.
+                        </li>
+                        <li>
+                            Leveraged Excel to build an internal inventory system that could utilize a barcoding system.
+                        </li>
+                        <li>
+                            Maintained the website by keeping up to date records of the current inventory.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr />
+            <div class="row">
+                <h2>Education</h2>
+                <div class="row">
+                    <div class="col-sm-2">
+                        <strong>August 2014 - May 2017</strong>
+                    </div>
+                    <div class="col-sm-10">
+                        <h4>
+                            Bachelor of Science in Computer Science and Mathematics
+                            <br />
+                            <small class="text-muted">University of Arizona</small>
+                        </h4>
+                        <ul>
+                            <li>Double major in Computer Science and Mathematics</li>
+                            <li>Theta Tau, a professional engineering fraternity</li>
+                            <li>Hack Arizona 2017 (Hackathon)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

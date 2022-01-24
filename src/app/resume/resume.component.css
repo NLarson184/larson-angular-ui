@@ -1,0 +1,25 @@
+.resume-style {
+    background: #aec2b9;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.resume-summary {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+}
+
+.partial-right-border {
+    display: inline-block;
+    position: relative;
+}
+.partial-right-border::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 80%;
+    top: 10%;
+    border-right: 1px solid #590925;
+}

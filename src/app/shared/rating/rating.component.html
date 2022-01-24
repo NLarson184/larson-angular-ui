@@ -1,0 +1,9 @@
+<div class="container">
+    <div class="row">
+        <mat-icon *ngFor="let filled of counter(currRating)" fontSet="fas" fontIcon="fa-square"></mat-icon>
+        <mat-icon *ngFor="let empty of counter(maxRating - currRating)" fontSet="far" fontIcon="fa-square"></mat-icon>
+    </div>
+    <div class="row" *ngIf="isShowDesc">
+        <span class="text-muted">{{ ratingDescriptions[currRating - 1] }}</span>
+    </div>
+</div>

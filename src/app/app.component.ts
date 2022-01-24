@@ -37,6 +37,7 @@ export class AppComponent implements OnInit {
     // Load in the SCSS fontawesome libraries into the mat icon registry
     registry.registerFontClassAlias('fontawesome', 'fa');
     registry.registerFontClassAlias('brands', 'fab');
+    registry.registerFontClassAlias('regular', 'far');
   }
 
   ngOnInit(): void {
