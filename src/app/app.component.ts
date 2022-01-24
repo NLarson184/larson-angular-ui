@@ -6,14 +6,14 @@ import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { map, Observable, shareReplay } from 'rxjs';
 import { LoginComponent } from './login/login.component';
 import { TokenStorageService } from './services/token-storage.service';
+import { fadeInAnimation } from './animations';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [
-    
-  ]
+  animations: [fadeInAnimation]
 })
 export class AppComponent implements OnInit {
   private title: string = 'Nick Larson Site';
@@ -41,13 +41,13 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.isLoggedIn = !!this.tokenStorageService.getToken();
-      if(this.isLoggedIn) {
-        const user = this.tokenStorageService.getUser();
-        this.roles = user.roles;
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      const user = this.tokenStorageService.getUser();
+      this.roles = user.roles;
 
-        this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      }
+      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+    }
   }
 
   openLoginModal() {
@@ -57,5 +57,9 @@ export class AppComponent implements OnInit {
   logout(): void {
     this.tokenStorageService.signOut();
     window.location.reload();
+  }
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet?.activatedRouteData?.['animation'];
   }
 }

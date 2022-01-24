@@ -13,17 +13,17 @@ import { SharedCalendarComponent } from './project-list/shared-calendar/shared-c
 import { ResumeComponent } from './resume/resume.component';
 
 const routes: Routes = [
-  { path: 'home', component: HomeComponent },
-  { path: 'resume', component: ResumeComponent },
-  { path: 'projectList', component: ProjectListComponent },
-  { path: 'projectList/bucketList', component: BucketListComponent },
-  { path: 'projectList/exerciseTracker', component: ExerciseTrackerComponent },
-  { path: 'projectList/goalTracker', component: GoalTrackerComponent },
-  { path: 'projectList/sharedCalendar', component: SharedCalendarComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'home', component: HomeComponent, data: { animation: 'HomePage' } },
+  { path: 'resume', component: ResumeComponent, data: { animation: 'ResumePage' } },
+  { path: 'projectList', component: ProjectListComponent, data: { animation: 'ProjectListPage' } },
+  { path: 'projectList/bucketList', component: BucketListComponent, data: { animation: 'BucketListProjectPage' } },
+  { path: 'projectList/exerciseTracker', component: ExerciseTrackerComponent, data: { animation: 'ExerciseTrackerProjectPage' } },
+  { path: 'projectList/goalTracker', component: GoalTrackerComponent, data: { animation: 'GoalTrackerProjectPage' } },
+  { path: 'projectList/sharedCalendar', component: SharedCalendarComponent, data: { animation: 'SharedCalendarProjectPage' } },
+  { path: 'contact', component: ContactComponent, data: { animation: 'ContactPage' } },
+  { path: 'profile', component: ProfileComponent, data: { animation: 'ProfilePage' } },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', component: PageNotFoundComponent, data: { animation: 'ErrorPage' } }
 ];
 
 @NgModule({
