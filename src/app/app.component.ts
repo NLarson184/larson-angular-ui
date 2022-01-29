@@ -7,7 +7,7 @@ import { map, Observable, shareReplay } from 'rxjs';
 import { LoginComponent } from './login/login.component';
 import { TokenStorageService } from './services/token-storage.service';
 import { fadeInAnimation } from './animations';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +32,9 @@ export class AppComponent implements OnInit {
     private registry: MatIconRegistry,
     private breakpointObserver: BreakpointObserver,
     private modalService: NgbModal,
-    private tokenStorageService: TokenStorageService
+    private tokenStorageService: TokenStorageService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {
     // Load in the SCSS fontawesome libraries into the mat icon registry
     registry.registerFontClassAlias('fontawesome', 'fa');
@@ -48,6 +50,7 @@ export class AppComponent implements OnInit {
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
     }
+    console.dir(this.route);
   }
 
   openLoginModal() {

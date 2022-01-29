@@ -117,7 +117,7 @@ $LarsonServerUI-theme: mat.define-light-theme((
 ));
 
 .background-style {
-  background: mat.get-color-from-palette($opal-palette, 300);
+  background: '#F6f4E8';
 }
 
 // Include theme styles for core and each component used in your app.

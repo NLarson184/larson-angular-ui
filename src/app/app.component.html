@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
-  <div class="container fluid">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #DBE6E0">
+  <div class="container fluid ">
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
       aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle Navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,7 +11,7 @@
       </div>
       <div class="offcanvas-body w-100">
         <!-- Core Navbar Section -->
-        <ul class="navbar-nav w-100 justify-content-center">
+        <ul class="navbar-nav w-100 justify-content-center text-light">
           <li class="nav-item">
             <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
           </li>
@@ -47,6 +47,7 @@
         <ul class='navbar-nav ms-auto' *ngIf="!isLoggedIn">
           <li class="nav-item">
             <a type="button" class="nav-link" (click)="openLoginModal()">Login</a>
+            <!-- <a type="button" class="nav-link" routerLink="./login">Login</a> -->
           </li>
         </ul>
         <ul class='navbar-nav ms-auto' *ngIf="isLoggedIn">
