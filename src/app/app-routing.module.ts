@@ -11,6 +11,7 @@ import { GoalTrackerComponent } from './project-list/goal-tracker/goal-tracker.c
 import { ProjectListComponent } from './project-list/project-list.component';
 import { SharedCalendarComponent } from './project-list/shared-calendar/shared-calendar.component';
 import { ResumeComponent } from './resume/resume.component';
+import { LoginModalComponent } from './shared/login-modal/login-modal.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, data: { animation: 'HomePage' } },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'projectList/sharedCalendar', component: SharedCalendarComponent, data: { animation: 'SharedCalendarProjectPage' } },
   { path: 'contact', component: ContactComponent, data: { animation: 'ContactPage' } },
   { path: 'profile', component: ProfileComponent, data: { animation: 'ProfilePage' } },
+  { path: 'login', component: LoginModalComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent, data: { animation: 'ErrorPage' } }
 ];

@@ -31,6 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS, RECAPTCHA_V3_SITE_KEY } from 'ng-recaptcha';
 import { environment } from 'src/environments/environment';
 import { RatingComponent } from './shared/rating/rating.component';
+import { LoginModalComponent } from './shared/login-modal/login-modal.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { RatingComponent } from './shared/rating/rating.component';
     ContactComponent,
     LoginComponent,
     ProfileComponent,
-    RatingComponent
+    RatingComponent,
+    LoginModalComponent
   ],
   imports: [
     BrowserModule,
