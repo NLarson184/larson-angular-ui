@@ -1,20 +1,20 @@
 import { Calendar } from "./calendar.model";
 
 interface IEvent {
-    _id: string;
+    id: string;
     name: string;
-    dateTime: Date;
+    dateTime: string;
     creator: string;
-    calendarList: Calendar[];
+    calendarList: string[];
     notes: string;
 }
 
 export class Event {
-    _id: string = '';
+    id: string = '';
     name: string = '';
-    dateTime: Date | undefined = undefined;
+    dateTime: string = '';
     creator: string = '';
-    calendarList: Calendar[] = [];
+    calendarList: string[] = [];
     notes: string = '';
 
     constructor(params: IEvent) {

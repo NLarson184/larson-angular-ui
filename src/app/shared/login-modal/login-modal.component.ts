@@ -50,10 +50,12 @@ export class LoginModalComponent implements OnInit {
       next: (data) => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
+        
+        let user = this.tokenStorage.getUser();
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
+        this.roles = user ? user.roles : [];
         this.reloadPage();
       },
       error: (err) => {

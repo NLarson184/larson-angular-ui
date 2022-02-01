@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   AUTH_URL: 'http://localhost:3000/api/v1/auth/',
-  API_URL: 'http://localhost:3000/api/v1/users/',
+  USER_URL: 'http://localhost:3000/api/v1/users/',
+  CALENDAR_URL: 'http://localhost:3000/api/v1/calendar/',
   siteKey: '6LeDZzUeAAAAAKWrz-Sdk66v8IU5XUh3Cwp8yR7o'
 };
 

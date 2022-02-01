@@ -1,5 +1,5 @@
 interface IUser {
-    _id: string;
+    id: string;
     accessToken: string;
     email: string;
     firstname: string;
@@ -8,7 +8,7 @@ interface IUser {
 }
 
 export class User {
-    _id: string = '';
+    id: string = '';
     accessToken: string = '';
     email: string = '';
     firstname: string = '';

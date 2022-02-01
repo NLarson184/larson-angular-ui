@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SharedCalendarComponent } from './shared-calendar.component';
+import { AddEditEventComponent } from './add-edit-event.component';
 
-describe('SharedCalendarComponent', () => {
-  let component: SharedCalendarComponent;
-  let fixture: ComponentFixture<SharedCalendarComponent>;
+describe('AddEditEventComponent', () => {
+  let component: AddEditEventComponent;
+  let fixture: ComponentFixture<AddEditEventComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SharedCalendarComponent ]
+      declarations: [ AddEditEventComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SharedCalendarComponent);
+    fixture = TestBed.createComponent(AddEditEventComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

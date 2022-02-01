@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import { TokenStorageService } from './services/token-storage.service';
 import { fadeInAnimation } from './animations';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { LoginModalComponent } from './shared/login-modal/login-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -46,7 +47,9 @@ export class AppComponent implements OnInit {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
     if (this.isLoggedIn) {
       const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
+      if(user) {
+        this.roles = user.roles;
+      }
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
     }
@@ -54,7 +57,7 @@ export class AppComponent implements OnInit {
   }
 
   openLoginModal() {
-    const loginModalRef = this.modalService.open(LoginComponent);
+    const loginModalRef = this.modalService.open(LoginModalComponent);
   }
 
   logout(): void {

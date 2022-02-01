@@ -51,8 +51,22 @@
           </li>
         </ul>
         <ul class='navbar-nav ms-auto' *ngIf="isLoggedIn">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/profile">My Account</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Account
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+              <li>
+                <a class="dropdown-item" routerLink="/profile" routerLinkActive="active">Overview</a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/calendar" routerLinkActive="active">Shared Calendar</a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
             <a type="button" class="nav-link" (click)="logout()">Logout</a>

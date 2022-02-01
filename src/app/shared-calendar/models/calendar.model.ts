@@ -1,14 +1,14 @@
-import { User } from "./user.model";
+import { User } from "../../models/user.model";
 
 interface ICalendar {
-    _id: string;
+    id: string;
     name: string;
     color: string;
     owner: User | string;
 }
 
 export class Calendar {
-    _id: string = '';
+    id: string = '';
     name: string = '';
     color: string = '';
     owner: User | string = '';

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../models/user.model';
 
 const TOKEN_KEY = 'auth-token';
@@ -8,7 +9,9 @@ const USER_KEY = 'auth-user';
   providedIn: 'root'
 })
 export class TokenStorageService {
-  constructor() { }
+  constructor(
+    public jwtHelper: JwtHelperService
+  ) { }
 
   // Clear out any stored sign in tokens and user objects
   signOut(): void {
@@ -23,7 +26,19 @@ export class TokenStorageService {
 
   // Get session token
   public getToken(): string | null {
-    return window.sessionStorage.getItem(TOKEN_KEY);
+    let token = window.sessionStorage.getItem(TOKEN_KEY);
+
+    if (this.isTokenExpired()) {
+      // Run the sign out logic if this token is expired
+      this.signOut();
+      return null;
+    }
+    return token;
+  }
+
+  private isTokenExpired(): boolean {
+    let token = window.sessionStorage.getItem(TOKEN_KEY);
+    return !token || this.jwtHelper.isTokenExpired(token);
   }
 
   // Save a user object
@@ -33,7 +48,12 @@ export class TokenStorageService {
   }
 
   // Get the user object
-  public getUser(): any {
+  public getUser(): User | null {
+    if (this.isTokenExpired()) {
+      // Run the sign out logic if the token is expired
+      this.signOut();
+      return null;
+    }
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
       return new User(JSON.parse(user));

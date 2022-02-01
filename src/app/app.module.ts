@@ -19,7 +19,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
 import { ResumeComponent } from './resume/resume.component';
-import { SharedCalendarComponent } from './project-list/shared-calendar/shared-calendar.component';
+import { SharedCalendarOverviewComponent } from './project-list/shared-calendar-overview/shared-calendar-overview.component';
 import { BucketListComponent } from './project-list/bucket-list/bucket-list.component';
 import { ExerciseTrackerComponent } from './project-list/exercise-tracker/exercise-tracker.component';
 import { GoalTrackerComponent } from './project-list/goal-tracker/goal-tracker.component';
@@ -32,13 +32,15 @@ import { RecaptchaModule, RecaptchaSettings, RECAPTCHA_SETTINGS, RECAPTCHA_V3_SI
 import { environment } from 'src/environments/environment';
 import { RatingComponent } from './shared/rating/rating.component';
 import { LoginModalComponent } from './shared/login-modal/login-modal.component';
+import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { SharedCalendarModule } from './shared-calendar/shared-calendar.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ResumeComponent,
-    SharedCalendarComponent,
+    SharedCalendarOverviewComponent,
     BucketListComponent,
     ExerciseTrackerComponent,
     GoalTrackerComponent,
@@ -65,6 +67,7 @@ import { LoginModalComponent } from './shared/login-modal/login-modal.component'
     LayoutModule,
     MatSidenavModule,
     MatListModule,
+    SharedCalendarModule
   ],
   providers: [
     authInterceptorProviders,
@@ -73,7 +76,9 @@ import { LoginModalComponent } from './shared/login-modal/login-modal.component'
       useValue: {
         siteKey: environment.siteKey
       } as RecaptchaSettings
-    }
+    },
+    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+    JwtHelperService
   ],
   bootstrap: [AppComponent]
 })

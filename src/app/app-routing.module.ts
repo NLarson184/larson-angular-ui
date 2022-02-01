@@ -9,9 +9,9 @@ import { BucketListComponent } from './project-list/bucket-list/bucket-list.comp
 import { ExerciseTrackerComponent } from './project-list/exercise-tracker/exercise-tracker.component';
 import { GoalTrackerComponent } from './project-list/goal-tracker/goal-tracker.component';
 import { ProjectListComponent } from './project-list/project-list.component';
-import { SharedCalendarComponent } from './project-list/shared-calendar/shared-calendar.component';
+import { SharedCalendarOverviewComponent } from './project-list/shared-calendar-overview/shared-calendar-overview.component';
 import { ResumeComponent } from './resume/resume.component';
-import { LoginModalComponent } from './shared/login-modal/login-modal.component';
+import { AuthGuardGuard } from './services/auth-guard.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, data: { animation: 'HomePage' } },
@@ -20,10 +20,11 @@ const routes: Routes = [
   { path: 'projectList/bucketList', component: BucketListComponent, data: { animation: 'BucketListProjectPage' } },
   { path: 'projectList/exerciseTracker', component: ExerciseTrackerComponent, data: { animation: 'ExerciseTrackerProjectPage' } },
   { path: 'projectList/goalTracker', component: GoalTrackerComponent, data: { animation: 'GoalTrackerProjectPage' } },
-  { path: 'projectList/sharedCalendar', component: SharedCalendarComponent, data: { animation: 'SharedCalendarProjectPage' } },
+  { path: 'projectList/sharedCalendarOverview', component: SharedCalendarOverviewComponent, data: { animation: 'SharedCalendarOverviewProjectPage' } },
   { path: 'contact', component: ContactComponent, data: { animation: 'ContactPage' } },
-  { path: 'profile', component: ProfileComponent, data: { animation: 'ProfilePage' } },
-  { path: 'login', component: LoginModalComponent },
+  { path: 'profile', component: ProfileComponent, data: { animation: 'ProfilePage' }, canActivate: [AuthGuardGuard] },
+  { path: 'login', component: LoginComponent },
+  { path: 'calendar', loadChildren: () => import('./shared-calendar/shared-calendar.module').then(m => m.SharedCalendarModule), canLoad: [AuthGuardGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent, data: { animation: 'ErrorPage' } }
 ];

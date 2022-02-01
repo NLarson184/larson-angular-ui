@@ -5,6 +5,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { TokenStorageService } from '../services/token-storage.service';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -33,15 +34,15 @@ export class LoginComponent implements OnInit {
   roles: string[] = [];
 
   constructor(
-    public activeModal: NgbActiveModal,
     public tokenStorage: TokenStorageService,
-    public authService: AuthService
+    public authService: AuthService,
+    public router: Router
   ) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
-      // Reload the page to remove the login button (should maybe route to user page)
-      this.reloadPage();
+      // Navigate to the home page if the user is already logged in
+      this.router.navigate(['profile']);
     }
   }
 
@@ -51,9 +52,11 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 
+        let user = this.tokenStorage.getUser();
+
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
+        this.roles = user ? user.roles : [];
         this.reloadPage();
       },
       error: (err) => {

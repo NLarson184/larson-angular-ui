@@ -1,10 +1,4 @@
-<div class="modal-header">
-    <h4 class="modal-title">Login</h4>
-    <button type="button" class="btn btn-light" aria-label="Close" (click)="activeModal.close('Cross Click')">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-<div class="modal-body" @fadeInOut>
+<div class="container">
     <form>
         <div class="mb-3">
             <label for="emailInput" class="form-label">Email Address</label>
@@ -16,12 +10,9 @@
             <input type="password" class="form-control" id="passwordInput" [(ngModel)]="password" required
                 #passwordInput="ngModel" name="passwordInput">
         </div>
+        <button *ngIf="emailAddress && password && !emailInput.invalid && !passwordInput.invalid" type="submit"
+            class="btn btn-success" (click)="onSubmit()">Login</button>
+        <button *ngIf="!emailAddress || !password || emailInput.invalid || passwordInput.invalid" type="submit"
+            class="btn btn-secondary" disabled>Login</button>
     </form>
-</div>
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="activeModal.close('Cancel Click')">Cancel</button>
-    <button *ngIf="emailAddress && password && !emailInput.invalid && !passwordInput.invalid" type="submit"
-        class="btn btn-success" (click)="onSubmit()">Login</button>
-    <button *ngIf="!emailAddress || !password || emailInput.invalid || passwordInput.invalid" type="submit"
-        class="btn btn-secondary" disabled>Login</button>
 </div>
