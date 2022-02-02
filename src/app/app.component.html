@@ -1,83 +1,115 @@
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #DBE6E0">
-  <div class="container fluid ">
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
-      aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle Navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title">Nick Larson</h5>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+<div class=" d-flex flex-column h-100">
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #DBE6E0">
+      <div class="container fluid ">
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar" aria-expanded="false" aria-label="Toggle Navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Nick Larson</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body w-100">
+            <!-- Login Section -->
+            <ul class='navbar-nav ms-auto' *ngIf="!isLoggedIn">
+              <li class="nav-item">
+                <a type="button" class="nav-link" (click)="openLoginModal()">Login</a>
+                <!-- <a type="button" class="nav-link" routerLink="./login">Login</a> -->
+              </li>
+            </ul>
+            <ul class='navbar-nav ms-auto' *ngIf="isLoggedIn">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button"
+                  data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+                  <li>
+                    <a class="dropdown-item" routerLink="/profile" routerLinkActive="active">Overview</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <a class="dropdown-item" routerLink="/calendar" routerLinkActive="active">Shared Calendar</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a type="button" class="nav-link" (click)="logout()">Logout</a>
+              </li>
+            </ul>
+
+            <!-- Core Navbar Section -->
+            <ul class="navbar-nav w-100 justify-content-center text-light">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/resume" routerLinkActive="active">R&#233;sum&#233;</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Project List
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" routerLink="/projectList" routerLinkActive="active"
+                      [routerLinkActiveOptions]="{exact: true}">Overview</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li><a class="dropdown-item" routerLink="/projectList/sharedCalendar" routerLinkActive="active">Shared
+                      Calendar</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
+              </li>
+            </ul>
+
+            <!-- Contact Link Section -->
+            <ul class="navbar-nav m-auto">
+              <li class="nav-item">
+                <a href="https://www.linkedin.com/in/nicholas-larson-883566129/" class="me-4 text-reset"
+                  target="_blank">
+                  <mat-icon fontSet="brands" fontIcon="fa-linkedin"></mat-icon>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="https://github.com/NLarson184" class="me-4 text-reset" target="_blank">
+                  <mat-icon fontSet="brands" fontIcon="fa-github-square"></mat-icon>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="mailto:nlarson184@gmail.com?subject=Website Contact" class="me-4 text-reset">
+                  <mat-icon fontSet="fa" fontIcon="fa-envelope"></mat-icon>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="offcanvas-body w-100">
-        <!-- Core Navbar Section -->
-        <ul class="navbar-nav w-100 justify-content-center text-light">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/resume" routerLinkActive="active">R&#233;sum&#233;</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Project List
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" routerLink="/projectList" routerLinkActive="active"
-                  [routerLinkActiveOptions]="{exact: true}">Overview</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" routerLink="/projectList/sharedCalendar" routerLinkActive="active">Shared
-                  Calendar</a></li>
-              <li><a class="dropdown-item" routerLink="/projectList/bucketList" routerLinkActive="active">Bucket
-                  List</a></li>
-              <li><a class="dropdown-item" routerLink="/projectList/exerciseTracker" routerLinkActive="active">Exercise
-                  Tracker</a></li>
-              <li><a class="dropdown-item" routerLink="/projectList/goalTracker" routerLinkActive="active">Long-term
-                  Goal Tracker</a></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="/contact" routerLinkActive="active">Contact</a>
-          </li>
-        </ul>
-        <!-- Login Section -->
-        <ul class='navbar-nav ms-auto' *ngIf="!isLoggedIn">
-          <li class="nav-item">
-            <a type="button" class="nav-link" (click)="openLoginModal()">Login</a>
-            <!-- <a type="button" class="nav-link" routerLink="./login">Login</a> -->
-          </li>
-        </ul>
-        <ul class='navbar-nav ms-auto' *ngIf="isLoggedIn">
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              Account
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-              <li>
-                <a class="dropdown-item" routerLink="/profile" routerLinkActive="active">Overview</a>
-              </li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li>
-                <a class="dropdown-item" routerLink="/calendar" routerLinkActive="active">Shared Calendar</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a type="button" class="nav-link" (click)="logout()">Logout</a>
-          </li>
-        </ul>
+    </nav>
+  </header>
+
+  <main class="flex-shrink-0">
+    <div class="container">
+      <div [@fadeInAnimation]="prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
       </div>
     </div>
-  </div>
-</nav>
-<div class="container">
-  <div [@fadeInAnimation]="prepareRoute(outlet)">
-    <router-outlet #outlet="outlet"></router-outlet>
-  </div>
+  </main>
+
+  <footer class="footer mt-auto py-3 bg-light text-muted">
+    <div class="container">
+      <!-- Website Source Links -->
+      <div class="container text-center">
+        <span>Website Source Code: <a href="https://github.com/NLarson184/larson-angular-ui" target="_blank">UI</a> and
+          <a href="https://github.com/NLarson184/larson-express-api" target="_blank">API</a></span>
+      </div>
+    </div>
+  </footer>
 </div>
