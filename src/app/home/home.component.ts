@@ -6,10 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  // Page Values
+  yearsOfExperience!: number;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.yearsOfExperience = new Date().getFullYear() - 2017;
   }
 
 }

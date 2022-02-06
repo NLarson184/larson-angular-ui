@@ -34,6 +34,7 @@ import { RatingComponent } from './shared/rating/rating.component';
 import { LoginModalComponent } from './shared/login-modal/login-modal.component';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { SharedCalendarModule } from './shared-calendar/shared-calendar.module';
+import { ContactFormComponent } from './shared/contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { SharedCalendarModule } from './shared-calendar/shared-calendar.module';
     LoginComponent,
     ProfileComponent,
     RatingComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    ContactFormComponent
   ],
   imports: [
     BrowserModule,

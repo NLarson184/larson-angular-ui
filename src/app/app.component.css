@@ -29,3 +29,7 @@
   /* .container {
     background-color: #F6f4E8;
   } */
+
+  .scrollbar-fix {
+    scrollbar-gutter: stable both-edges;
+  }
