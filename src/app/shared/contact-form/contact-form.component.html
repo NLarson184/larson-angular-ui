@@ -1,0 +1,36 @@
+<form class="row g-3" #contactForm="ngForm" (ngSubmit)="contactForm.form.valid && onSubmit(contactForm)">
+    <div class="col-md-4">
+        <label for="nameInput" class="form-label">Name</label>
+        <input type="text" class="form-control" id="nameInput" [(ngModel)]="formModel.name" name="nameInput" required
+            #name="ngModel" [ngClass]="{ 'is-invalid': name.invalid && (name.dirty || name.touched) }">
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
+            <div *ngIf="name.errors!['required']">Name is required.</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <label for="emailInput" class="form-label">Email</label>
+        <input type="email" class="form-control" id="emailInput" [(ngModel)]="formModel.email" name="emailInput"
+            required email #email="ngModel" [ngClass]="{ 'is-invalid': email.invalid && (email.dirty || email.touched) }">
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="invalid-feedback">
+            <div *ngIf="email.errors!['required']">Email is required.</div>
+            <div *ngIf="email.errors!['email']">Please enter a valid email.</div>
+        </div>
+    </div>
+    <div class='col-md-4'>
+        <label for="websiteInput" class="form-label">Company Website</label>
+        <input type="text" class="form-control" id="websiteInput" [(ngModel)]="formModel.website" name="websiteInput">
+    </div>
+    <div class="col-md-12">
+        <label for="messageInput" class="form-label">Message</label>
+        <textarea class="form-control" id="messageInput" name="messageInput" [(ngModel)]="formModel.message" required
+            #message="ngModel"
+            [ngClass]="{ 'is-invalid': message.invalid && (message.dirty || message.touched) }"></textarea>
+        <div *ngIf="message.invalid && (message.dirty || message.touched)" class="invalid-feedback">
+            <div *ngIf="message.errors!['required']">Message is required.</div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <button *ngIf="contactForm.invalid" class="btn btn-secondary" disabled>Submit</button>
+        <button *ngIf="!contactForm.invalid" class="btn btn-success" type="submit">Submit</button>
+    </div>
+</form>
